@@ -36,13 +36,11 @@ public class MainPresenterImpl extends BasePresenterImpl implements MainPresente
 
                     @Override
                     public void onError(Throwable e) {
-//                        mLogger.error(e.getMessage(), e);
                         mMainView.hideProgress();
                     }
 
                     @Override
                     public void onNext(GetIpInfoResponse getIpInfoResponse) {
-//                        mMainView.setupWeatherData(weatherResponse);
                         mMainView.showData(getIpInfoResponse.getData().getCountry());
                     }
                 }));
