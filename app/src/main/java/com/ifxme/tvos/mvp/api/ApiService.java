@@ -1,6 +1,5 @@
-package com.ifxme.tvos;
+package com.ifxme.tvos.mvp.api;
 
-import retrofit.Call;
 import retrofit.http.GET;
 import retrofit.http.Query;
 import rx.Observable;
@@ -10,5 +9,5 @@ import rx.Observable;
  */
 public interface ApiService {
     @GET("service/getIpInfo.php")
-    Observable<GetIpInfoResponse> getIpInfo(@Query("ip") String ip);
+   public Observable<GetIpInfoResponse> getIpInfo(@Query("ip") String ip);
 }

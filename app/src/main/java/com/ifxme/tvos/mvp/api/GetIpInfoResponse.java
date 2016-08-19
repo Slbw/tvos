@@ -1,4 +1,4 @@
-package com.ifxme.tvos;
+package com.ifxme.tvos.mvp.api;
 
 import com.ifxme.tvos.mvp.model.IpInfo;
 
@@ -6,6 +6,7 @@ import com.ifxme.tvos.mvp.model.IpInfo;
  * Created by Slbw on 2016/8/19.
  */
 public class GetIpInfoResponse extends BaseResponse {
+
     private IpInfo data;
 
     public IpInfo getData() {

@@ -7,6 +7,7 @@ public interface MainView extends BaseView{
 
     void showProgress();
     void hideProgress();
-    void setIpText(String text);
+    String getIpText();
+    void showData(String data);
 
 }
