@@ -1,9 +1,13 @@
-package com.ifxme.tvos;
+package com.ifxme.tvos.mvp.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+
+import com.ifxme.tvos.ApiService;
+import com.ifxme.tvos.GetIpInfoResponse;
+import com.ifxme.tvos.R;
 
 import retrofit.Call;
 import retrofit.Callback;
@@ -46,7 +50,7 @@ public class MainActivity extends AppCompatActivity {
 
                     @Override
                     public void onNext(GetIpInfoResponse getIpInfoResponse) {
-                        Log.e("MainActivity", getIpInfoResponse.data.country);
+                        Log.e("MainActivity", getIpInfoResponse.getData().getCountry());
                     }
                 });
 
