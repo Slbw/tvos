@@ -9,6 +9,7 @@ import rx.subscriptions.CompositeSubscription;
  */
 public class BasePresenterImpl implements BasePresenter {
 
+    //使用CompositeSubscription来持有所有的Subscriptions
     protected CompositeSubscription mSubscriptions = new CompositeSubscription();
 
     @Override
@@ -31,6 +32,7 @@ public class BasePresenterImpl implements BasePresenter {
 
     @Override
     public void onDestroy() {
+        //关闭界面时取消所有订阅，防止内存泄漏
         if (mSubscriptions != null) {
             mSubscriptions.unsubscribe();
         }
