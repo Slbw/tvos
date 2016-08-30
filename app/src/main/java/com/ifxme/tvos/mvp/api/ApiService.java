@@ -8,6 +8,6 @@ import rx.Observable;
  * Created by Slbw on 2016/8/19.
  */
 public interface ApiService {
-    @GET("service/getIpInfo.php")
-   public Observable<GetIpInfoResponse> getIpInfo(@Query("ip") String ip);
+    @GET("RestfulAPI/api/user/getUser")
+   public Observable<GetUserResponse> getUser(@Query("userId") String userId);
 }

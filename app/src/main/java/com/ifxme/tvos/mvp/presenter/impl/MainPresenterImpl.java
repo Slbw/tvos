@@ -2,8 +2,7 @@ package com.ifxme.tvos.mvp.presenter.impl;
 
 import com.ifxme.tvos.mvp.api.APIManager;
 import com.ifxme.tvos.mvp.api.ApiService;
-import com.ifxme.tvos.mvp.api.GetIpInfoResponse;
-import com.ifxme.tvos.mvp.presenter.BasePresenter;
+import com.ifxme.tvos.mvp.api.GetUserResponse;
 import com.ifxme.tvos.mvp.presenter.MainPresenter;
 import com.ifxme.tvos.mvp.ui.view.MainView;
 
@@ -24,11 +23,11 @@ public class MainPresenterImpl extends BasePresenterImpl implements MainPresente
 
     @Override
     public void getIpInfo() {
-        mSubscriptions.add(APIManager.getInstance().getApi(ApiService.class,"http://ip.taobao.com")
-                .getIpInfo(mMainView.getIpText())
+        mSubscriptions.add(APIManager.getInstance().getApi(ApiService.class,"http://www.ifxme.com:8080")
+                .getUser(mMainView.getUserId())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<GetIpInfoResponse>() {
+                .subscribe(new Subscriber<GetUserResponse>() {
                     @Override
                     public void onCompleted() {
                         mMainView.hideProgress();
@@ -36,12 +35,13 @@ public class MainPresenterImpl extends BasePresenterImpl implements MainPresente
 
                     @Override
                     public void onError(Throwable e) {
+                        e.printStackTrace();
                         mMainView.hideProgress();
                     }
 
                     @Override
-                    public void onNext(GetIpInfoResponse getIpInfoResponse) {
-                        mMainView.showData(getIpInfoResponse.getData().getCountry());
+                    public void onNext(GetUserResponse getUserResponse) {
+                        mMainView.showData(getUserResponse.getData().getUsername());
                     }
                 }));
     }

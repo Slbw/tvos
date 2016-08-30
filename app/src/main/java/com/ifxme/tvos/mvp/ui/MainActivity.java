@@ -50,8 +50,8 @@ public class MainActivity extends AppCompatActivity implements MainView {
     }
 
     @Override
-    public String getIpText() {
-        return "63.223.108.42";
+    public String getUserId() {
+        return "1";
     }
 
     @Override
