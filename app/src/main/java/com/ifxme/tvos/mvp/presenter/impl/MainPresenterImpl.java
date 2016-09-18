@@ -2,7 +2,7 @@ package com.ifxme.tvos.mvp.presenter.impl;
 
 import com.ifxme.tvos.mvp.api.APIManager;
 import com.ifxme.tvos.mvp.api.ApiService;
-import com.ifxme.tvos.mvp.api.GetUserResponse;
+import com.ifxme.tvos.mvp.api.response.GetUserResponse;
 import com.ifxme.tvos.mvp.presenter.MainPresenter;
 import com.ifxme.tvos.mvp.ui.view.MainView;
 
@@ -41,7 +41,7 @@ public class MainPresenterImpl extends BasePresenterImpl implements MainPresente
 
                     @Override
                     public void onNext(GetUserResponse getUserResponse) {
-                        mMainView.showData(getUserResponse.getData().getUsername());
+                        mMainView.showData(getUserResponse.getData().name);
                     }
                 }));
     }

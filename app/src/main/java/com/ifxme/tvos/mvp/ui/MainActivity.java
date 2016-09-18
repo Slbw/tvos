@@ -14,7 +14,7 @@ import com.ifxme.tvos.mvp.ui.view.MainView;
 import com.orhanobut.logger.Logger;
 
 
-public class MainActivity extends AppCompatActivity implements MainView {
+public class MainActivity extends BaseActivity implements MainView {
 
 
     private MainPresenter mMainPresenter;

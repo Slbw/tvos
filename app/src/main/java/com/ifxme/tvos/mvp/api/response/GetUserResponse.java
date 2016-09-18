@@ -1,6 +1,6 @@
-package com.ifxme.tvos.mvp.api;
+package com.ifxme.tvos.mvp.api.response;
 
-import com.ifxme.tvos.mvp.model.IpInfo;
+import com.ifxme.tvos.mvp.api.BaseResponse;
 import com.ifxme.tvos.mvp.model.User;
 
 /**
