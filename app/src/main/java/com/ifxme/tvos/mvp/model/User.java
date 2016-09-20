@@ -6,7 +6,7 @@ package com.ifxme.tvos.mvp.model;
 public class User {
 
     public int id;
-    public String name;
+    public String userName;
     public String phone;
     public int sex;
     public int roleId;

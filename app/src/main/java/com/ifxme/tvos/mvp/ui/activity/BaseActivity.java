@@ -1,4 +1,4 @@
-package com.ifxme.tvos.mvp.ui;
+package com.ifxme.tvos.mvp.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 

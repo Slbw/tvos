@@ -2,9 +2,11 @@ package com.ifxme.tvos.mvp.presenter.impl;
 
 import com.ifxme.tvos.mvp.api.APIManager;
 import com.ifxme.tvos.mvp.api.ApiService;
+import com.ifxme.tvos.mvp.api.response.GetUserListResponse;
 import com.ifxme.tvos.mvp.api.response.GetUserResponse;
-import com.ifxme.tvos.mvp.presenter.MainPresenter;
-import com.ifxme.tvos.mvp.ui.view.MainView;
+import com.ifxme.tvos.mvp.presenter.UserPresenter;
+import com.ifxme.tvos.mvp.ui.view.UserView;
+import com.ifxme.tvos.mvp.util.Constant;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
@@ -13,35 +15,35 @@ import rx.schedulers.Schedulers;
 /**
  * Created by Slbw on 2016/8/19.
  */
-public class MainPresenterImpl extends BasePresenterImpl implements MainPresenter{
+public class UserPresenterImpl extends BasePresenterImpl implements UserPresenter {
 
-    private MainView mMainView;
+    private UserView mUserView;
 
-    public MainPresenterImpl(MainView mainView) {
-        mMainView = mainView;
+    public UserPresenterImpl(UserView userView) {
+        mUserView = userView;
     }
 
     @Override
-    public void getIpInfo() {
-        mSubscriptions.add(APIManager.getInstance().getApi(ApiService.class,"http://www.ifxme.com:8080")
-                .getUser(mMainView.getUserId())
+    public void getUserList() {
+        mSubscriptions.add(APIManager.getInstance().getApi(ApiService.class, Constant.host)
+                .getUserList()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Subscriber<GetUserResponse>() {
+                .subscribe(new Subscriber<GetUserListResponse>() {
                     @Override
                     public void onCompleted() {
-                        mMainView.hideProgress();
+                        mUserView.hideProgress();
                     }
 
                     @Override
                     public void onError(Throwable e) {
                         e.printStackTrace();
-                        mMainView.hideProgress();
+                        mUserView.hideProgress();
                     }
 
                     @Override
-                    public void onNext(GetUserResponse getUserResponse) {
-                        mMainView.showData(getUserResponse.getData().name);
+                    public void onNext(GetUserListResponse getUserListResponse) {
+                        mUserView.showData(getUserListResponse.data);
                     }
                 }));
     }

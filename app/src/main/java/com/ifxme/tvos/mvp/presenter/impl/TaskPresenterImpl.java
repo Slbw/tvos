@@ -2,7 +2,6 @@ package com.ifxme.tvos.mvp.presenter.impl;
 
 import com.ifxme.tvos.mvp.presenter.TaskPresenter;
 import com.ifxme.tvos.mvp.ui.view.AddTaskView;
-import com.ifxme.tvos.mvp.ui.view.MainView;
 
 /**
  * Created by Slbw on 2016/9/18.
