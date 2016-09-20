@@ -48,7 +48,7 @@ public class UserListAdapter extends RecyclerView.Adapter<UserListAdapter.UserHo
         holder.itemView.setTag(position);
         User user = userList.get(position);
         holder.tvName.setText(user.userName);
-        holder.tvRoleName.setText(user.roleName);
+        holder.tvRoleName.setText(user.role);
     }
 
     @Override

@@ -5,6 +5,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.view.View;
 
 import com.ifxme.tvos.R;
 import com.ifxme.tvos.mvp.model.User;
@@ -22,6 +24,7 @@ public class ContactActivity extends BaseActivity implements UserView {
     private UserPresenter mUserPresenter;
     private List<User> users;
     private UserListAdapter adapter;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,6 +41,8 @@ public class ContactActivity extends BaseActivity implements UserView {
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvPeople.setLayoutManager(mLayoutManager);
         rvPeople.setItemAnimator(new DefaultItemAnimator());
+        toolbar=(Toolbar)findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
     }
 
     private void initData() {
@@ -49,7 +54,12 @@ public class ContactActivity extends BaseActivity implements UserView {
     }
 
     private void initListener() {
-
+        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
 

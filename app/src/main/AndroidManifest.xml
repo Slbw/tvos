@@ -20,7 +20,7 @@
         </activity>
         <activity android:name=".mvp.ui.activity.AddTaskActivity" />
         <activity android:name=".mvp.ui.activity.MainActivity" />
-        <activity android:name=".mvp.ui.activity.ContactActivity"></activity>
+        <activity android:name=".mvp.ui.activity.ContactActivity" android:label="@string/title_activity_contact"></activity>
     </application>
 
 </manifest>

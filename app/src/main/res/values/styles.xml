@@ -12,7 +12,7 @@
         <style name="AppTheme" parent="AppTheme.Base">
         </style>
 
-        <style name="AppTheme.Base" parent="Theme.AppCompat.Light.DarkActionBar">
+        <style name="AppTheme.Base" parent="Theme.AppCompat.DayNight.DarkActionBar">
             <item name="windowActionBar">false</item>
             <item name="android:windowNoTitle">true</item>
             <!-- 使用 API Level 22 編譯的話，要拿掉前綴字 -->

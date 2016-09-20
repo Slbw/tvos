@@ -10,5 +10,5 @@ public class User {
     public String phone;
     public int sex;
     public int roleId;
-    public String roleName;
+    public String role;
 }
