@@ -1,10 +1,12 @@
 package com.ifxme.tvos.mvp.model;
 
+import java.io.Serializable;
+
 /**
  * Created by Slbw on 2016/9/21.
  */
 
-public class Task {
+public class Task implements Serializable{
 
     public int id;
     public String taskName;

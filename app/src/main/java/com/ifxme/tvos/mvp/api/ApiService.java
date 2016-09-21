@@ -1,5 +1,6 @@
 package com.ifxme.tvos.mvp.api;
 
+import com.ifxme.tvos.mvp.api.response.GetLoginResponse;
 import com.ifxme.tvos.mvp.api.response.GetTaskListResponse;
 import com.ifxme.tvos.mvp.api.response.GetUserListResponse;
 import com.ifxme.tvos.mvp.api.response.GetUserResponse;
@@ -13,6 +14,17 @@ import rx.Observable;
  * Created by Slbw on 2016/8/19.
  */
 public interface ApiService {
+
+
+    /**
+     * 用户登录
+     * @param phone
+     * @param password
+     * @return
+     */
+    @GET("RestfulAPI/api/user/login")
+    public Observable<GetLoginResponse> login(@Query("phone") String phone,@Query("password") String password);
+
     /**
      * 通过id 查找用户
      *
@@ -38,6 +50,15 @@ public interface ApiService {
      */
     @GET("RestfulAPI/api/task/list")
     public Observable<GetTaskListResponse> getTaskList();
+
+
+    /**
+     * 获取我的任务列表
+     * @param userId
+     * @return
+     */
+    @GET("RestfulAPI/api/task/myList")
+    public Observable<GetTaskListResponse> getMyTaskList(@Query("userId") int userId);
 
 
     /**

@@ -26,30 +26,28 @@ public class ContactActivity extends BaseActivity implements UserView {
     private UserPresenter mUserPresenter;
     private List<User> users;
     private UserListAdapter adapter;
-    private Toolbar toolbar;
     private FloatingActionButton fabAddContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_contact);
-        initView();
-        initData();
-        initListener();
     }
 
-    private void initView() {
+    @Override
+    protected void initView() {
+        super.initView();
         rvPeople = (RecyclerView) findViewById(R.id.rvPeople);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvPeople.setLayoutManager(mLayoutManager);
         rvPeople.setItemAnimator(new DefaultItemAnimator());
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
         fabAddContact=(FloatingActionButton)findViewById(R.id.fabAddContact);
-        setSupportActionBar(toolbar);
     }
 
-    private void initData() {
+    @Override
+    protected void initData() {
+        super.initData();
         users = new ArrayList<User>();
         mUserPresenter = new UserPresenterImpl(this);
         mUserPresenter.getUserList();
@@ -57,13 +55,9 @@ public class ContactActivity extends BaseActivity implements UserView {
         rvPeople.setAdapter(adapter);
     }
 
-    private void initListener() {
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+    @Override
+    protected void initListener() {
+        super.initListener();
 
         fabAddContact.setOnClickListener(new View.OnClickListener() {
             @Override

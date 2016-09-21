@@ -1,5 +1,6 @@
 package com.ifxme.tvos.mvp.ui.activity.task;
 
+import android.content.Intent;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -7,6 +8,8 @@ import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 
 import com.ifxme.tvos.R;
@@ -31,30 +34,27 @@ public class TaskActivity extends BaseActivity implements TaskView {
     private TaskPresenter mTaskPresenter;
     private List<Task> tasks;
     private TaskListAdapter adapter;
-    private Toolbar toolbar;
     private FloatingActionButton fabAddTask;
+    private boolean isShowMyTask = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_task);
-        initView();
-        initData();
-        initListener();
     }
 
-    private void initView() {
+    protected void initView() {
+        super.initView();
         rvTask = (RecyclerView) findViewById(R.id.rvTask);
         LinearLayoutManager mLayoutManager = new LinearLayoutManager(this);
         mLayoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         rvTask.setLayoutManager(mLayoutManager);
         rvTask.setItemAnimator(new DefaultItemAnimator());
-        toolbar=(Toolbar)findViewById(R.id.toolbar);
-        fabAddTask=(FloatingActionButton)findViewById(R.id.fabAddTask);
-        setSupportActionBar(toolbar);
+        fabAddTask = (FloatingActionButton) findViewById(R.id.fabAddTask);
     }
 
-    private void initData() {
+    protected void initData() {
+        super.initData();
         tasks = new ArrayList<Task>();
         mTaskPresenter = new TaskPresenterImpl(this);
         mTaskPresenter.getTaskList();
@@ -62,18 +62,22 @@ public class TaskActivity extends BaseActivity implements TaskView {
         rvTask.setAdapter(adapter);
     }
 
-    private void initListener() {
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
-
+    protected void initListener() {
+        super.initListener();
         fabAddTask.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //TODO 添加任务
+                startActivity(new Intent(TaskActivity.this, AddTaskActivity.class));
+            }
+        });
+
+        adapter.setOnItemClickListener(new TaskListAdapter.OnItemClickListener() {
+            @Override
+            public void onItemClick(int position) {
+                Intent intent = new Intent();
+                intent.setClass(TaskActivity.this, TaskDetailActivity.class);
+                intent.putExtra(TaskDetailActivity.INTENT_TASK_INFO, tasks.get(position));
+                startActivity(intent);
             }
         });
     }
@@ -95,4 +99,31 @@ public class TaskActivity extends BaseActivity implements TaskView {
         tasks.addAll(data);
         adapter.notifyDataSetChanged();
     }
+
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_task, menu);
+        return true;
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (item.getItemId() == R.id.menu_item_task) {
+            if (isShowMyTask) {
+                mTaskPresenter.getTaskListById(app.getUser().id);
+                toolbar.getMenu().getItem(0).setTitle("查看所有");
+                toolbar.setTitle("我的任务");
+            } else {
+                mTaskPresenter.getTaskList();
+                toolbar.getMenu().getItem(0).setTitle("查看我的");
+                toolbar.setTitle("所有任务");
+            }
+            isShowMyTask = !isShowMyTask;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
 }

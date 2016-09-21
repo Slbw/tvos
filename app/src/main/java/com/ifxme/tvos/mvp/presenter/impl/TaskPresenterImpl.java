@@ -62,6 +62,26 @@ public class TaskPresenterImpl extends BasePresenterImpl implements TaskPresente
 
     @Override
     public void getTaskListById(int userId) {
+        mSubscriptions.add(APIManager.getInstance().getApi(ApiService.class, Constant.host)
+                .getMyTaskList(userId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe(new Subscriber<GetTaskListResponse>() {
+                    @Override
+                    public void onCompleted() {
+                        taskView.hideProgress();
+                    }
 
+                    @Override
+                    public void onError(Throwable e) {
+                        e.printStackTrace();
+                        taskView.hideProgress();
+                    }
+
+                    @Override
+                    public void onNext(GetTaskListResponse getTaskListResponse) {
+                        taskView.showTaskList(getTaskListResponse.data);
+                    }
+                }));
     }
 }

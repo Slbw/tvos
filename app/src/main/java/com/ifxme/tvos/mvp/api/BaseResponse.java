@@ -4,13 +4,10 @@ package com.ifxme.tvos.mvp.api;
  * Created by Slbw on 2016/8/19.
  */
 public class BaseResponse {
-    private int code;
-
-    public int getCode() {
-        return code;
-    }
-
-    public void setCode(int code) {
-        this.code = code;
-    }
+    /**
+     * 成功的code
+     */
+    public static final int CODE_SUCCESS=1;
+    public int code;
+    public String msg;
 }
