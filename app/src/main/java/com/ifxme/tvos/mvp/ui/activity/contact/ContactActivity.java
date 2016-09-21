@@ -1,6 +1,7 @@
-package com.ifxme.tvos.mvp.ui.activity;
+package com.ifxme.tvos.mvp.ui.activity.contact;
 
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,6 +13,7 @@ import com.ifxme.tvos.R;
 import com.ifxme.tvos.mvp.model.User;
 import com.ifxme.tvos.mvp.presenter.UserPresenter;
 import com.ifxme.tvos.mvp.presenter.impl.UserPresenterImpl;
+import com.ifxme.tvos.mvp.ui.activity.BaseActivity;
 import com.ifxme.tvos.mvp.ui.adapter.UserListAdapter;
 import com.ifxme.tvos.mvp.ui.view.UserView;
 
@@ -25,6 +27,7 @@ public class ContactActivity extends BaseActivity implements UserView {
     private List<User> users;
     private UserListAdapter adapter;
     private Toolbar toolbar;
+    private FloatingActionButton fabAddContact;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +45,7 @@ public class ContactActivity extends BaseActivity implements UserView {
         rvPeople.setLayoutManager(mLayoutManager);
         rvPeople.setItemAnimator(new DefaultItemAnimator());
         toolbar=(Toolbar)findViewById(R.id.toolbar);
+        fabAddContact=(FloatingActionButton)findViewById(R.id.fabAddContact);
         setSupportActionBar(toolbar);
     }
 
@@ -60,6 +64,13 @@ public class ContactActivity extends BaseActivity implements UserView {
                 onBackPressed();
             }
         });
+
+        fabAddContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //TODO 添加人员
+            }
+        });
     }
 
 
@@ -75,7 +86,7 @@ public class ContactActivity extends BaseActivity implements UserView {
 
 
     @Override
-    public void showData(List<User> data) {
+    public void showUserList(List<User> data) {
         users.clear();
         users.addAll(data);
         adapter.notifyDataSetChanged();

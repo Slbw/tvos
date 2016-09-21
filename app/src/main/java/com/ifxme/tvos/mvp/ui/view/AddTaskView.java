@@ -16,13 +16,7 @@ public interface AddTaskView extends BaseView{
      * 获取负责人
      * @return
      */
-    User getBoss();
-
-    /**
-     * 获取打杂人员
-     * @return
-     */
-    List<User> getStaffs();
+    User getStaff();
 
     /**
      * 获取任务开始时间

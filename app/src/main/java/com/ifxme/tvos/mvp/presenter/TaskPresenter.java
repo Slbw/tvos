@@ -10,11 +10,22 @@ public interface TaskPresenter extends BasePresenter{
     /**
      * 获取工作人员列表
      */
-    public void requestUserList();
+     void requestUserList();
 
     /**
      * 添加任务
      */
-    public void addTask();
+     void addTask();
+
+    /**
+     * 获取所有任务列表
+     */
+     void getTaskList();
+
+    /**
+     * 获取我的任务列表
+     * @param userId
+     */
+     void getTaskListById(int userId);
 
 }

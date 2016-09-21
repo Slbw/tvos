@@ -22,7 +22,7 @@
     </android.support.design.widget.AppBarLayout>
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/rvPeople"
+        android:id="@+id/rvTask"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/appBarLayout">
@@ -30,7 +30,7 @@
     </android.support.v7.widget.RecyclerView>
 
     <android.support.design.widget.FloatingActionButton
-        android:id="@+id/fabAddContact"
+        android:id="@+id/fabAddTask"
         android:layout_alignParentBottom="true"
         android:layout_alignParentRight="true"
         app:useCompatPadding="true"

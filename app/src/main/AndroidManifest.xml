@@ -18,9 +18,12 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mvp.ui.activity.AddTaskActivity" />
+        <activity android:name=".mvp.ui.activity.task.AddTaskActivity" />
         <activity android:name=".mvp.ui.activity.MainActivity" />
-        <activity android:name=".mvp.ui.activity.ContactActivity" android:label="@string/title_activity_contact"></activity>
+        <activity
+            android:name=".mvp.ui.activity.contact.ContactActivity"
+            android:label="@string/title_activity_contact" />
+        <activity android:name=".mvp.ui.activity.task.TaskActivity"></activity>
     </application>
 
 </manifest>

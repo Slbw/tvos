@@ -7,10 +7,13 @@ import android.view.View;
 import android.widget.Button;
 
 import com.ifxme.tvos.R;
+import com.ifxme.tvos.mvp.ui.activity.contact.ContactActivity;
+import com.ifxme.tvos.mvp.ui.activity.task.TaskActivity;
 
 public class NavigationActivity extends AppCompatActivity {
 
     private Button btnContact;
+    private Button btnTask;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,6 +27,7 @@ public class NavigationActivity extends AppCompatActivity {
     private void initView()
     {
         btnContact=(Button)findViewById(R.id.btnContact);
+        btnTask=(Button)findViewById(R.id.btnTask);
     }
 
     private void initData()
@@ -37,6 +41,13 @@ public class NavigationActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(NavigationActivity.this,ContactActivity.class));
+            }
+        });
+
+        btnTask.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(NavigationActivity.this,TaskActivity.class));
             }
         });
     }

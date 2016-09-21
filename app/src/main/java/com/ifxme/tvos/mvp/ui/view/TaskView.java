@@ -1,16 +1,18 @@
 package com.ifxme.tvos.mvp.ui.view;
 
+import com.ifxme.tvos.mvp.model.Task;
 import com.ifxme.tvos.mvp.model.User;
 
 import java.util.List;
 
 /**
- * Created by Slbw on 2016/8/19.
+ * Created by Slbw on 2016/9/21.
  */
-public interface UserView extends BaseView{
+
+public interface TaskView extends BaseView{
 
     void showProgress();
     void hideProgress();
-    void showUserList(List<User> data);
+    void showTaskList(List<Task> data);
 
 }

@@ -43,9 +43,14 @@ public class UserPresenterImpl extends BasePresenterImpl implements UserPresente
 
                     @Override
                     public void onNext(GetUserListResponse getUserListResponse) {
-                        mUserView.showData(getUserListResponse.data);
+                        mUserView.showUserList(getUserListResponse.data);
                     }
                 }));
+    }
+
+    @Override
+    public void getUserListById(int userId) {
+
     }
 
     @Override

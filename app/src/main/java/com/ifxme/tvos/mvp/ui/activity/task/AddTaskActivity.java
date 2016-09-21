@@ -1,8 +1,9 @@
-package com.ifxme.tvos.mvp.ui.activity;
+package com.ifxme.tvos.mvp.ui.activity.task;
 
 import android.os.Bundle;
 
 import com.ifxme.tvos.R;
+import com.ifxme.tvos.mvp.ui.activity.BaseActivity;
 
 public class AddTaskActivity extends BaseActivity {
 
