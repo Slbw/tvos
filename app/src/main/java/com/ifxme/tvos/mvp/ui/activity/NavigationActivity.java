@@ -55,7 +55,7 @@ public class NavigationActivity extends BaseActivity {
         btnChangePwd.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                startActivity(new Intent(NavigationActivity.this, ChangePwdActivity.class));
             }
         });
         btnLogout.setOnClickListener(new View.OnClickListener() {

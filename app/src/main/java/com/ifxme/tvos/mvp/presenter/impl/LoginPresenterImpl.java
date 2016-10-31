@@ -13,6 +13,7 @@ import com.ifxme.tvos.mvp.util.MD5Util;
 
 import rx.Subscriber;
 import rx.android.schedulers.AndroidSchedulers;
+import rx.functions.Action1;
 import rx.schedulers.Schedulers;
 
 /**

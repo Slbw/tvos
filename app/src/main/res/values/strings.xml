@@ -3,6 +3,7 @@
     <string name="title_activity_contact">所有人员</string>
     <string name="title_activity_task">所有任务</string>
     <string name="title_activity_login">登录</string>
+    <string name="title_activity_change_pwd">密码修改</string>
 
     <string name="action_sign_in_short">登录</string>
 </resources>
