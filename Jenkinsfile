@@ -1,5 +1,10 @@
 pipeline {
-  agent any
+  agent {
+    node {
+      label 'slbw'
+    }
+    
+  }
   stages {
     stage('build') {
       steps {
