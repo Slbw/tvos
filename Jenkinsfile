@@ -1,7 +1,7 @@
 pipeline {
   agent any
   stages {
-    stage('bluid') {
+    stage('build') {
       steps {
         echo 'build start'
       }
